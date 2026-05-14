@@ -1,10 +1,8 @@
 import streamlit as st
 import google.generativeai as genai
 
-# Website ki setting
 st.set_page_config(page_title="ViralFlow AI", page_icon="🚀")
 
-# Design theek kiya gaya hai
 st.markdown("""
 <style>
     [data-testid="stAppViewContainer"] { background-color: #ffffff; color: #000000; }
@@ -16,13 +14,11 @@ st.markdown("""
 st.title("🚀 ViralFlow AI")
 st.write("Kamran Ali ka apna Viral Content Generator")
 
-# API Key aur Settings
 api_key = st.text_input("1. Apni Gemini API Key yahan dalein:", type="password")
 lang = st.selectbox("2. Zaban select karein:", ["Roman Urdu", "Pure Urdu", "English"])
 
 st.divider()
 
-# Input Topic
 topic = st.text_input("3. Video ka topic likhein:", placeholder="maslan: Mobile se paise kaise kamayein")
 
 if st.button("Generate Script"):
@@ -33,7 +29,8 @@ if st.button("Generate Script"):
     else:
         try:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel("gemini-1.5-flash")
+            # Yahan model ka naam badal diya hai jo 100% chalega
+            model = genai.GenerativeModel("gemini-pro")
             
             prompt = f"Write a viral social media script in {lang} about: {topic}. Include a hook and CTA."
             
